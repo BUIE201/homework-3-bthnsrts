@@ -42,27 +42,30 @@ public:
 
 	
 
-	std::vector<int> Largest(Node* pRoot, Node* head,std::vector <int> branch,int sum= 0) {
+	std::vector<int> Largest(Node* pRoot, Node* head,std::vector <int> branch) {
 	
-		 sum+= head->data;
-		branch.push_back(sum);
-		int max = 0;
-		std::vector <int> Rbranch=branch, Lbranch=branch;
+		int node_value= head->data;
+		std::vector<int> Rbranch = {0}, Lbranch = {0};
 		if (head->right != nullptr) {
-			 Rbranch = Largest(head,head->right,branch,sum);
+			 Rbranch = Largest(head,head->right,branch);
 		}
 		if (head->left != nullptr) {
-			 Lbranch = Largest(head,head->left,branch,sum);
+			 Lbranch = Largest(head,head->left,branch);
 		}
-
-		int Rsum = Rbranch.back();
-		int Lsum = Lbranch.back();
-		if (Rsum > Lsum) { branch = Rbranch; }
-		else { branch = Lbranch; }
+	
+		if (Lbranch.back() > Rbranch.back()) {
+			branch = Lbranch;
+			branch.push_back(node_value + Lbranch.back());
+		}
+		else{
+			branch = Rbranch;
+			branch.push_back(node_value + Rbranch.back());
+		}
+		
 
 		if (head == pRoot) {
 			std::cout << "Branch with the maximum sum is: ";
-			for (int i = 0; i < branch.size(); i++) {
+			for (int i = 1; i < branch.size(); i++) {
 				if (!i) {
 					std::cout << branch[i] << " ";
 				}
