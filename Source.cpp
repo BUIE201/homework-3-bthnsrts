@@ -65,13 +65,9 @@ public:
 
 		if (head == pRoot) {
 			std::cout << "Branch with the maximum sum is: ";
-			for (int i = 1; i < branch.size(); i++) {
-				if (!i) {
-					std::cout << branch[i] << " ";
-				}
-				else {
-					std::cout << branch[i] - branch[i - 1]<< " ";
-				}
+			for (int i = branch.size()-1; i > 0; i--) {
+				std::cout << branch[i] - branch[i - 1]<< " ";
+				
 			}
 			std::cout << "-> SUM = " << branch.back() << std::endl;
 		}
@@ -99,6 +95,7 @@ void main()
 	Insert_to_right(pRoot->right, new Node(4));
 	Insert_to_left(pRoot->right, new Node(13));
 	Insert_to_right(pRoot->right->right, new Node(1));
+	
 
 	// Function will print out the branch which has maximum sum.
 	std::vector <int> branch;
