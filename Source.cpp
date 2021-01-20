@@ -5,8 +5,6 @@
 // Basically we will determine where any node will be put for the construction of the structure.
 // I am imitating the binary tree given as an example in the readme file.
 
-static int max = 0;
-static std::vector<int> list;
 
 class Node {
 
