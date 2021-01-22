@@ -19,28 +19,28 @@ public:
 
 // since this is not the conventional binary tree in which smaller values are assigned to the left of the node
 // and bigger values are assigned to the right of the node, insert functions are manual and we determine where to put.
-	void Insert_to_left(Node* head,Node* node) {
+	void Insert_to_left(Node*& head,Node* node) {
 		if (!head->left) {
 			head->left = node;
 		}
 		else {
-			std::cout << "No space on the left" << std::endl;
+			std::cout << "No space on the left of this node" << std::endl;
 		}
 	}
 
-	void Insert_to_right(Node* head, Node* node) {
+	void Insert_to_right(Node*& head, Node* node) {
 		if (!head->right) {
 			head->right = node;
 		}
 		else {
-			std::cout << "No space on the right" << std::endl;
+			std::cout << "No space on the right of this node" << std::endl;
 		}
 	}
 /////////////////////////////////////////////
 
 	
 
-	std::vector<int> Largest(Node* pRoot, Node* head,std::vector <int> branch) {
+	std::vector<int> Largest(Node*& pRoot, Node*& head,std::vector <int> branch) {
 	
 		int node_value= head->data;
 		std::vector<int> Rbranch = {0}, Lbranch = {0};
